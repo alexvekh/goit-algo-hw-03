@@ -1,4 +1,5 @@
 import turtle
+import argparse
 
 def koch_curve(t, order, size):
     if order == 0:
@@ -26,6 +27,16 @@ def draw_koch_curve(order, size=300):
     window.mainloop()
 
 
+if __name__ == '__main__':
+  parser = argparse.ArgumentParser(description='Recursion level')
+  parser.add_argument('recursion_level', nargs='?', help='Recursion level')
+  args = parser.parse_args()
+  print(args)
+  recursion_level = args.recursion_level
+  if recursion_level:
+    recursion_level = int(recursion_level)
+  else:
+    print("Буде промальована сніжинка Коха.")
+    recursion_level = int(input("Який ви бажаєте рівень рекурсії? "))
 
-# Виклик функції
-draw_koch_curve(3)
+  draw_koch_curve(recursion_level)
